@@ -63,19 +63,10 @@ class test_signUp(unittest.TestCase) :
         self.driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").click()
         self.driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("Test@123#")
         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
-        self.driver.implicitly_wait(15)
-        element = self.driver.find_element(By.LINK_TEXT, "Categories")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.CSS_SELECTOR, "span:nth-child(1) > span").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".dropdown-item:nth-child(1)").click()
-        element = self.driver.find_element(By.CSS_SELECTOR, "div > span:nth-child(1)")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.CSS_SELECTOR, "#profileDropdown div > span").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".dropdown-item:nth-child(3)").click()
+        self.driver.find_element_by_id("profileDropdown").click()
+        self.driver.find_element_by_xpath("//div[@id='root']/div/nav/div[2]/ul/li[2]/div/div[3]/span").click()
+        print('Sign in completed')
         self.driver.implicitly_wait(5)
-        print('Sign in Completed')
 
     @classmethod
     def tearDownClass(self) :
